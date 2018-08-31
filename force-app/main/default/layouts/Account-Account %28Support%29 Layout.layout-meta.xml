@@ -150,7 +150,7 @@
         <editHeading>false</editHeading>
         <layoutColumns>
             <layoutItems>
-                <customLink>Billing</customLink>
+                <customLink></customLink>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
