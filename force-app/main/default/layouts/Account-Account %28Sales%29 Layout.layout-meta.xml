@@ -147,7 +147,7 @@
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
         <layoutColumns>
-            <layoutItems>
+           <layoutItems>
                 <customLink>Billing</customLink>
             </layoutItems>
         </layoutColumns>
@@ -268,3 +268,4 @@
     <showRunAssignmentRulesCheckbox>true</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
 </Layout>
+
