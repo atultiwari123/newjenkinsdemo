@@ -15,16 +15,16 @@ node {
     def SCRATCH_ORG_USER_NAME
 	
 	/*
-    def HUB_ORG_USER_NAME=env.HUB_ORG_USER_NAME
+    def HUB_ORG_USER_NAME=env.HUB_ORG_USER_NAME for recorgnition
     def SFDC_LOGIN_URL = env.SFDC_LOGIN_URL
     def JWT_CRED_ID_FOR_PRIVATE_KEY_FILE = env.JWT_CRED_ID_FOR_PRIVATE_KEY_FILE
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY
     */
     
-    def CONNECTED_APP_CONSUMER_KEY="3MVG9d8..z.hDcPIQ0ESt2HagklZfk2o1VN19ZNoCyVe9u2WllHn6n1k1ENhrnc.mUUt_TuZoZFwWWm9zTcqF"
-    def JWT_CRED_ID_FOR_PRIVATE_KEY_FILE = env.JWT_CRED_ID_FOR_PRIVATE_KEY_FILE   
+    def CONNECTED_APP_CONSUMER_KEY="3MVG9YDQS5WtC11qbtGN1lfVSDFJM7869jU4YZeKFaB7RXuOdoKcf45ZIM3SH7qJD0r9AYpvY1sYoNO.jmtSH"
+    def JWT_CRED_ID_DH = env.JWT_CRED_ID_DH   
     def SFDC_LOGIN_URL = "https://login.salesforce.com"
-    def HUB_ORG_USER_NAME="somnath_dhar@devhub1.yahoo.com"
+    def HUB_ORG_DH="Demodevhubaccount12345@cognizant.com"
     def PERMISSION_SET = "Geolocation"
    
 
@@ -34,17 +34,17 @@ node {
         checkout scm
     }
 
-    withCredentials([file(credentialsId: JWT_CRED_ID_FOR_PRIVATE_KEY_FILE, variable: 'jwt_key_file')]) 
+    withCredentials([file(credentialsId: JWT_CRED_ID_DH, variable: 'jwt_key_file')]) 
    { 
         stage('Authorize hub org and set default CI scratch org') 
         {
 			
-			rc = sh returnStatus: true, script: "'${toolbelt}/sfdx' force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG_USER_NAME} --jwtkeyfile '${jwt_key_file}' --setdefaultdevhubusername --instanceurl ${SFDC_LOGIN_URL}"
+			rc = sh returnStatus: true, script: "sfdx force:auth:jwt:grant --clientid 3MVG9YDQS5WtC11qbtGN1lfVSDFJM7869jU4YZeKFaB7RXuOdoKcf45ZIM3SH7qJD0r9AYpvY1sYoNO.jmtSH --username Demodevhubaccount12345@cognizant.com --jwtkeyfile '${jwt_key_file}' --setdefaultdevhubusername --instanceurl https://login.salesforce.com"
            
-            if (rc != 0) { error 'hub org authorization failed' }	
+            if (rc != 0) { error 'hub org authorization failed ' }	
             
            // need to pull out assigned username
-		   rmsg = sh returnStdout: true, script: "'${toolbelt}/sfdx' force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
+		   rmsg = sh returnStdout: true, script: "sfdx force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
 		   
 		   //printf rmsg		   
 		    
