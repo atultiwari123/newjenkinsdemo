@@ -149,9 +149,9 @@
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
         <layoutColumns>
-            <layoutItems>
+            <!--<layoutItems>
                 <customLink>Billing</customLink>
-            </layoutItems>
+            </layoutItems>-->
         </layoutColumns>
         <layoutColumns/>
         <layoutColumns/>
