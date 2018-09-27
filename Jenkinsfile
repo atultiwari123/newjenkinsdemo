@@ -82,7 +82,7 @@ node {
             }
         }
 
-        stage('Run Apex Test') 
+      /*  stage('Run Apex Test') 
         {
             sh "mkdir -p ${RUN_ARTIFACT_DIR}"
             timeout(time: 120, unit: 'SECONDS') 
@@ -93,7 +93,7 @@ node {
                     error 'apex test run failed'
                 }
             }
-        }
+        }*/
 
         stage('collect results') 
         {
